@@ -9,7 +9,10 @@ export const issuesData = [
     reportedBy: "QA Team",
     createdDate: "2025-06-08",
     affectedUsers: 1250,
-    color:'red',
+    color:{
+      bg:'#EAC7CE',
+      text:'#FE0F3F'
+    },
     technicalDetails: "Auth service overloaded, connection pool exhausted, Redis cache misses increasing"
   },
   
@@ -23,7 +26,10 @@ export const issuesData = [
     reportedBy: "User Support",
     createdDate: "2025-06-05",
     affectedUsers: 800,
-    color:'blue',
+    color:{
+      bg:'#A0B9E4',
+      text:'#1E52AB'
+    },
     technicalDetails: "useEffect cleanup functions missing, event listeners not removed, interval timers persist"
   },
 
@@ -38,7 +44,10 @@ export const issuesData = [
     createdDate: "2025-06-01",
     resolvedDate: "2025-06-07",
     affectedUsers: 320,
-    color:'green',
+    color:{
+      bg:'#C0F5C4',
+      text:'#10A91A'
+    },
     technicalDetails: "Safari CSS Grid autoprefixer compatibility, fallback flexbox implementation added"
   },
 
@@ -52,7 +61,10 @@ export const issuesData = [
     reportedBy: "Monitoring System",
     createdDate: "2025-06-09",
     affectedUsers: 2100,
-    color:'red',
+    color:{
+      bg:'#EAC7CE',
+      text:'#FE0F3F'
+    },
     technicalDetails: "PostgreSQL max_connections reached, slow queries not releasing connections, pool configuration needs optimization"
   },
 
@@ -66,7 +78,10 @@ export const issuesData = [
     reportedBy: "Marketing Team", 
     createdDate: "2025-06-03",
     affectedUsers: 150,
-    color:'blue',
+    color:{
+      bg:'#A0B9E4',
+      text:'#1E52AB'
+    },
     technicalDetails: "Handlebars template compilation issue, Outlook HTML rendering quirks, MJML framework integration needed"
   }
 ];

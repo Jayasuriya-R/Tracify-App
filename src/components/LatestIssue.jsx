@@ -8,7 +8,7 @@ const LatestIssue = () => {
       <div className="p-4 font-bold text-lg  text-gray-500">
         <h1>Latest Issues</h1>
       </div>
-      {issuesData.map((x) => <IssueDetails desc={x.description} status={x.status} color={x.color}/>)}
+      {issuesData.map((x) => <IssueDetails key={x.id} desc={x.description} status={x.status} color={x.color}/>)}
     </div>
   );
 };
