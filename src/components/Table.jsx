@@ -12,7 +12,6 @@ const Table = ({data}) => {
         <Column field='description' header="Description" sortable style={{ width: '40%' }} />
         <Column field='status' header="Staus" sortable style={{ width: '20%' }}/>
         <Column field='createdDate' header="CreatedDate" sortable style={{ width: '25%' }} />
-    
       </DataTable>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import IssueDetails from "./IssueDetails";
 import { issuesData } from "../utils/constants";
 import Table from "./Table";
+import { Button } from 'primereact/button';
 
 const MainContainer = () => {
   const [option, setOption] = useState("All");
@@ -11,10 +12,11 @@ const MainContainer = () => {
   return (
     <div>
       <div className="flex p-6">
-        <h1 className="m-2 text-gray-600 font-medium">Filter by status</h1>
+        <h1 className="m-2 text-gray-600 font-medium">Filter by status</h1> 
+        
         <div>
           <select
-            className=" mx-4 h-10 border border-gray-400 rounded-lg p-1"
+            className=" mx-4 h-12 border border-gray-400 rounded-lg p-1"
             onChange={handleChange}
           >
             <option>All</option>
@@ -23,6 +25,7 @@ const MainContainer = () => {
             <option>Resolved</option>
           </select>
         </div>
+        <Button label="Add issue" size="small"/>
       </div>
       {option == "All" ? (
         <Table data={issuesData} />
