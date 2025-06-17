@@ -3,6 +3,7 @@ import IssueDetails from "./IssueDetails";
 import { issuesData } from "../utils/constants";
 import Table from "./Table";
 import { Button } from 'primereact/button';
+import { Link } from "react-router";
 
 const MainContainer = () => {
   const [option, setOption] = useState("All");
@@ -25,7 +26,7 @@ const MainContainer = () => {
             <option>Resolved</option>
           </select>
         </div>
-        <Button label="Add issue" size="small"/>
+        <Link to='/issue/add'><Button label="Add issue" size="small"/></Link>
       </div>
       {option == "All" ? (
         <Table data={issuesData} />

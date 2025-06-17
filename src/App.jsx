@@ -12,6 +12,7 @@ import Issue from "./components/Issue";
 import NavBar from "./components/NavBar";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { Outlet } from "react-router";
+import AddIssue from "./components/AddIssue";
 
 const AppLayout = () => (
   <>
@@ -27,6 +28,7 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <Body /> },
       { path: "/issue", element: <Issue /> },
+      { path: "/issue/add", element: <AddIssue/> },
     ],
   },
 ]);
