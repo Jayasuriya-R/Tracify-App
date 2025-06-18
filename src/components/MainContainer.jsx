@@ -4,17 +4,25 @@ import { issuesData } from "../utils/constants";
 import Table from "./Table";
 import { Button } from 'primereact/button';
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 
 const MainContainer = () => {
   const [option, setOption] = useState("All");
+ const issuesFromStore = useSelector((store) => store.issue.issues);
+
+// Get the latest issue (last element)
+const latestIssue = issuesFromStore?.[issuesFromStore.length - 1];
+
+if (latestIssue) {
+  issuesData.push(latestIssue);
+}
   const handleChange = (e) => {
     setOption(e.target.value);
   };
   return (
     <div>
       <div className="flex p-6">
-        <h1 className="m-2 text-gray-600 font-medium">Filter by status</h1> 
-        
+        <h1 className="m-2 text-gray-600 font-medium">Filter by status</h1>  
         <div>
           <select
             className=" mx-4 h-12 border border-gray-400 rounded-lg p-1"

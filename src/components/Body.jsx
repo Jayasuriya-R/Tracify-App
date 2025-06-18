@@ -4,13 +4,13 @@ import LatestIssue from './LatestIssue'
 
 const Body = () => {
   return (
-    <div>
-      <div className='grid grid-cols-12 px-8 mt-[3%]'>
-       <div className='col-span-7'>
+    <div className=''>
+      <div className='grid grid-cols-12 px-8  mt-[3%]'>
+       <div className='col-span-7 z-20'>
         <CardContainer/>
         {/* <BarChartData/> */}
        </div>
-       <div className='col-span-5'>
+       <div className='col-span-5 z-20'>
         <LatestIssue/>
        </div>
       </div>

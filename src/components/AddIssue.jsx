@@ -6,6 +6,8 @@ import { Calendar } from "primereact/calendar";
 import { SplitButton } from 'primereact/splitbutton';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import { addIssue } from "../utils/issueSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const AddIssue = () => {
   const [title, setTitle] = useState("");
@@ -15,39 +17,51 @@ const AddIssue = () => {
   const [priorityValue, setPriorityValue] = useState(null);
   const [date, setDate] = useState(null);
   const [issues, setIssues] = useState([]);
-
+  const dispatch = useDispatch();
   const toast = useRef(null);
+  
   const status = ["Open", "In Progress", "Closed"];
   const priority = ["Low", "Medium", "High","Critical"];
 
   const save = () => {
-    const newIssue = {
-      id: issues.length + 1, // Or use uuid
-      titel:title,
-      description:description,
-      status: statusValue,
-      assignee:assignee,
-      priority: priorityValue,
-      createdDate: date,
-    };
+  if (!title || !description || !statusValue || !assignee || !priorityValue || !date) {
+    toast.current.show({
+      severity: 'warn',
+      summary: 'Validation',
+      detail: 'Please fill all fields',
+    });
+    return;
+  }
 
-    if (!title || !description || !statusValue || !assignee || !priorityValue || !date) {
-      toast.current.show({ severity: 'warn', summary: 'Validation', detail: 'Please fill all fields' });
-      return;
-    }
-  
-    setIssues([...issues, newIssue]); // Appending new issue
-    console.log("New Issue Added:", newIssue);
-    toast.current.show({ severity: 'success', summary: 'Success', detail: 'Issue added' });
-
-    // Clear form
-    setTitle("");
-    setDescription("");
-    setStatusValue(null);
-    setAssignee("");
-    setPriorityValue(null);
-    setDate(null);
+  const newIssue = {
+    id: issues.length + 1, // Optional: use uuid() for safer unique IDs
+    title: title, // 🔧 Fixed typo from "titel"
+    description: description,
+    status: statusValue,
+    assignee: assignee,
+    priority: priorityValue,
+    createdDate: date,
   };
+
+  issues.length>0 && dispatch(addIssue(newIssue)); // ✅ dispatch only the new issue
+  setIssues((prev) => [...prev, newIssue]); // Optional, only if you're using local state too
+
+  // console.log("New Issue Added:", newIssue);
+  // toast.current.show({
+  //   severity: 'success',
+  //   summary: 'Success',
+  //   detail: 'Issue added',
+  // });
+
+  // Clear form
+  setTitle("");
+  setDescription("");
+  setStatusValue(null);
+  setAssignee("");
+  setPriorityValue(null);
+  setDate(null);
+};
+
 
   return (
     <div className="flex  justify-center h-screen py-4 bg-gray-100">

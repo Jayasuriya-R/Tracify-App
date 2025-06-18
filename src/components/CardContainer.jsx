@@ -15,7 +15,7 @@ const CardContainer = () => {
         { cases.map((x)=><IssueCard status={x.status} count={x.count} color={x.color}/>)}
     </div>
 
-    <div className="mt-10 flex items-center">
+    <div className="mt-[9%] flex items-center">
         <BarChartData data={cases}/>
     </div>
     </>
